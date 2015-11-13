@@ -7,7 +7,7 @@ DFPW        Cure Heavy Wounds
 DFW         Cure Light Wounds         
 DFWFd       Blindness                 
 DPP         Amnesia                   
-DSF         Confusion/Maladroitness   
+DSF         Confusion
 DSFFFc      Disease                   
 DWFFd       Blindness                 
 DWSSSP      Delay Effect              
@@ -30,7 +30,7 @@ SPFPSDW     Permanency
 SPPc        Time Stop               
 SPPFD       Time Stop               
 SSFP        Resist Cold             
-SWD         Fear (No CFDS)          
+SWD         Fear
 SWWc        Fire Storm              
 WDDc        Clap of Lightning     
 WFP         Cause Light Wounds      
