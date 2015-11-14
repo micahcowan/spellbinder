@@ -5,6 +5,7 @@ module Spellbinder.Gestures
 
   , gesture
   , handedGesture
+  , parseSpellHands
   )
 where
 
@@ -37,6 +38,8 @@ data HandUsage =
   | BothHands Gesture
     deriving (Show)
 
+-- For a non-valid gesture (upper or lower) "c", returns Left c
+-- Otherwise, Right HandUsage
 handedGesture :: Char -> Either Char HandUsage
 handedGesture c =
     case gesture (toUpper c) of
@@ -47,3 +50,14 @@ handedGesture c =
                     else
                         BothHands gest
         Left c -> Left c
+
+parseSpellHands :: String -> Either (Int, Char) [ HandUsage ]
+parseSpellHands str =
+    let indexedHands = zip [1..] $ map handedGesture str
+        liftOut (n, either) = case either of
+            Left c -> Left (n, c)
+            Right hand -> Right (n, hand)
+    in
+        case mapM liftOut indexedHands of
+            Left err -> Left err
+            Right hs -> Right $ map snd hs

@@ -25,7 +25,7 @@ PWPFSSSD    Finger of Death
 PWPWWc      Haste
 SD          Magic Missile
 SFW         Summon Goblin
-SPFP        Anti-spell
+SPFP        Anti Spell
 SPFPSDW     Permanency
 SPPc        Time Stop
 SPPFD       Time Stop
