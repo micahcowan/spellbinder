@@ -38,6 +38,7 @@ makeModule input =
 \\n\
 \data " ++ spellTypeName ++ " = \n\
 \    " ++ intercalate "\n  | " spellNameList ++ "\n\
+\  deriving (Show)\n\
 \\n\
 \type " ++ entryTypeName ++ " = ([ HandUsage ], Spell)\n\
 \\n\

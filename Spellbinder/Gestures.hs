@@ -24,14 +24,19 @@ data Gesture =
   | NoGesture
     deriving (Show, Eq)
 
-gesture :: Char -> Either Char Gesture
-gesture 'C' = Right Clap
-gesture 'D' = Right Digit
-gesture 'F' = Right Finger
-gesture 'P' = Right Palm
-gesture 'S' = Right Snap
-gesture 'W' = Right Wave
-gesture c   = Left c
+gestureList =
+    [
+        ('C', Clap)
+      , ('D', Digit)
+      , ('F', Finger)
+      , ('P', Palm)
+      , ('S', Snap)
+      , ('W', Wave)
+      , ('>', Stab)
+      , ('-', NoGesture)
+    ]
+gesture :: Char -> Maybe Gesture
+gesture = flip lookup gestureList
 
 data HandUsage =
     OneHand Gesture
@@ -43,13 +48,13 @@ data HandUsage =
 handedGesture :: Char -> Either Char HandUsage
 handedGesture c =
     case gesture (toUpper c) of
-        Right gest ->
+        Just gest ->
             Right $ if isUpper c
                     then
                         OneHand gest
                     else
                         BothHands gest
-        Left c -> Left c
+        Nothing -> Left c
 
 parseSpellHands :: String -> Either (Int, Char) [ HandUsage ]
 parseSpellHands str =
